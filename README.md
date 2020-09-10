@@ -7,10 +7,10 @@ The Gradle plugin to help with using Aliyun EMAS services SDK(Support multiple p
 
 **This plugin supports multiple product flavros**
 
-| This plugin        | Single Product Flavor | Multiple Product Flavor |
+| \                  | Single Product Flavor | Multiple Product Flavor |
 |:-------------------|:----------------------|:-------------------------|
-| The offical plugin | ./app/aliyun-emas-services.json | x |
-| This plugin        | ./app/aliyun-emas-services.json<br/>(or) ./app/src/main/aliyun-emas-services.json | ./app/aliyun-emas-services.json<br/>./app/src/${anyFlavor}/aliyun-emas-services.json |
+| The offical plugin | ./app/aliyun-emas-services.json | [x] |
+| This plugin        | ./app/aliyun-emas-services.json<br/>(or) ./app/src/main/aliyun-emas-services.json | ./app/src/${anyFlavor}/aliyun-emas-services.json |
 
 **Note:** *The packageName in the json configuration file must be consistent with the applicationId of the current channel in the Android project, otherwise the compilation will fail*
 
