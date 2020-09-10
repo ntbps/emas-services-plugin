@@ -14,6 +14,7 @@ class EmasDependencyAnalyzer {
 
     EmasDependencyAnalyzer(String projectName) {
         logger.info("Created $this for project:${projectName}")
+        logger.info("Please note that if the gradle task fails, please execute \"./gradle \${task} --debug\" in the terminal for more detailed information")
     }
 
     static void handleDependenciesServices(Project project, def variant) throws IOException {

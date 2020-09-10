@@ -53,7 +53,7 @@ class EmasServicesPlugin implements Plugin<Project>, GroovyObject {
         try {
             EmasDependencyWorker.checkIfApplicationIdMatched(project, variant)
         } catch (EmasServicesException e) {
-            logger.error("${e.getMessage()}")
+            logger.debug("${variant.applicationId}:${variant.flavorName}: ${e.getMessage()}")
             return
         }
 
