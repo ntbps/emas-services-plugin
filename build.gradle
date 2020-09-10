@@ -1,0 +1,56 @@
+//buildscript {
+//    repositories {
+//        jcenter()
+//    }
+//    dependencies {
+//        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+//    }
+//}
+
+apply plugin: 'groovy'
+apply plugin: 'java-gradle-plugin'
+
+group = 'com.aliyun.ams'
+version = '1.0.1.nvlab-SNAPSHOT'
+project.ext.archivesBaseName = 'emas-services'
+project.ext.pomDesc = 'Aliyun plug-in to build EMAS applications.'
+
+repositories {
+    google()
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    implementation gradleApi()
+    // implementation localGroovy()
+    // implementation 'org.codehaus.groovy:groovy-all:2.3.11'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.guava:guava:27.0.1-jre'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
+
+gradlePlugin {
+    plugins {
+        greetingsPlugin {
+            id = 'com.aliyun.ams.emas-services'
+            implementationClass = 'com.aliyun.ams.emasservices.EmasServicesPlugin'
+        }
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+//apply plugin: 'maven'
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            repository(url: uri('${HOME}/Development'))
+//        }
+//    }
+//}
+
+//if (project.hasProperty('bintrayUser') && project.hasProperty('bintrayKey')) {
+//    apply from: 'bintray.gradle'
+//}
