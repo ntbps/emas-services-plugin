@@ -81,7 +81,7 @@ class EmasDependencyWorker {
             }
         }
 
-        if (quickstartFile == null) {
+        if (quickstartFile == null || !quickstartFile.isFile()) {
             quickstartFile = project.file(JSON_FILE_NAME)
             searchedLocation = searchedLocation + quickstartFile.path
         }
