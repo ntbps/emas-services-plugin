@@ -88,8 +88,8 @@ EMAS: tlog_service service disabled!
 EMAS: httpdns_service service disabled!
 EMAS: apm_service service disabled!
 EMAS: man_service service disabled!
-EMAS: add dependencies: oem_xiaomuDebugImplementation com.aliyun.ams:alicloud-android-push:3.2.1
-EMAS: add dependencies: oem_xiaomuDebugImplementation com.aliyun.ams:alicloud-android-third-push:3.2.0
+EMAS: add dependencies: testFlavorDebugImplementation com.aliyun.ams:alicloud-android-push:3.2.1
+EMAS: add dependencies: testFlavorDebugImplementation com.aliyun.ams:alicloud-android-third-push:3.2.0
 ```
 
 ## [LICENSE](./LICENSE)
