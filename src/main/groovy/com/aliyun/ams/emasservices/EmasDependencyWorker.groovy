@@ -43,6 +43,7 @@ class EmasDependencyWorker {
     public static final String SERVICE = "_service"
 
     public static final String CPS = "cps"
+    public static final String CPS_THIRD_PART = "third-cps"
 
     public static final String PUSH = "push"
 
@@ -133,8 +134,8 @@ class EmasDependencyWorker {
             return null
         if (service_name.endsWith(SERVICE))
             service_name = service_name.replace(SERVICE, "")
-        if (service_name == CPS)
-            service_name = PUSH
+        if (service_name == CPS || service_name == CPS_THIRD_PART)
+            service_name.replace(CPS, PUSH)
         return "${PRE_ARTIFACT}${service_name}"
     }
 

@@ -11,6 +11,7 @@ import org.gradle.api.logging.Logging
 
 class EmasDependencyAnalyzer {
     private static final Logger logger = Logging.getLogger(EmasDependencyAnalyzer.class.getSimpleName())
+    private static final String CONFIGURATION = "implementation" // "compile"
 
     EmasDependencyAnalyzer(String projectName) {
         logger.info("Created $this for project:${projectName}")
@@ -24,7 +25,6 @@ class EmasDependencyAnalyzer {
             return
         }
         JsonPrimitive whetherUseMavenObject = rootObject.getAsJsonPrimitive("use_maven")
-        String configurationName = "implementation" // "compile"
         if (whetherUseMavenObject == null)
             throw new EmasServicesException("Missing useMavenDependencies so can not add dependencies!")
         JsonObject servicesObject = rootObject.getAsJsonObject("services")
@@ -39,18 +39,17 @@ class EmasDependencyAnalyzer {
         }
         boolean hasServices = false
         for (Map.Entry<String, JsonElement> entry : (Iterable<Map.Entry<String, JsonElement>>) servicesObject.entrySet()) {
-            hasServices = handleDependenciesService(project, entry, configurationName, hasServices, useMaven)
+            hasServices = handleDependenciesService(project, entry, hasServices, useMaven)
         }
         if (hasServices && !useMaven) {
             ConfigurableFileTree configurableFileTree = project.fileTree(new HashMap<String, String>(2))
-            project.dependencies.add(configurationName, configurableFileTree)
+            project.dependencies.add(CONFIGURATION, configurableFileTree)
             project.repositories.flatDir(new HashMap<String, String>(1))
         }
     }
 
     private static boolean handleDependenciesService(Project project,
                                                      Map.Entry<String, JsonElement> entry,
-                                                     String configurationName,
                                                      boolean hasServices,
                                                      boolean useMaven) {
         String artifactId = EmasDependencyWorker.getArtifactWithServiceName(entry.key)
@@ -64,14 +63,14 @@ class EmasDependencyAnalyzer {
                         if (useMaven) {
                             String artifact = "${EmasDependencyWorker.MODULE_GROUP}:${artifactId}:${serviceEntity.version}"
                             logger.info("add dependencies :${artifact}")
-                            project.dependencies.add(configurationName, artifact)
+                            project.dependencies.add(CONFIGURATION, artifact)
                             return hasServices
                         }
                         final String fileName = artifactId + "-" + serviceEntity.version
                         File file = new File("${project.projectDir.path}/libs/${fileName}.aar")
                         if (file.exists()) {
                             logger.info("add local sdk dependency : ${fileName}")
-                            project.dependencies.add(configurationName, new HashMap<String, String>())
+                            project.dependencies.add(CONFIGURATION, new HashMap<String, String>())
                             return hasServices
                         } else {
                             throw new EmasServicesException("use_maven=false means use local sdk,but can't find :${file.name}, please download sdk in emas console!")
