@@ -5,11 +5,11 @@ The Gradle plugin to help with using Aliyun EMAS services SDK(Support multiple p
 
 ## The difference between this plugin and the official gradle plugin
 
-**This plugin supports multiple product flavros**
+**This plugin supports multiple product flavors**
 
 | \                  | Single Product Flavor | Multiple Product Flavor |
 |:-------------------|:----------------------|:-------------------------|
-| The offical plugin | ./app/aliyun-emas-services.json | [x] |
+| The official plugin | ./app/aliyun-emas-services.json | [x] |
 | This plugin        | ./app/aliyun-emas-services.json<br/>(or) ./app/src/main/aliyun-emas-services.json | ./app/src/${anyFlavor}/aliyun-emas-services.json |
 
 **Note:** *The packageName in the json configuration file must be consistent with the applicationId of the current channel in the Android project, otherwise the compilation will fail*
@@ -23,6 +23,22 @@ ${TestProjectRootDir}/app/src/testFlavor/release/aliyun-emas-services.json
 ${TestProjectRootDir}/app/src/release/testFlavor/aliyun-emas-services.json
 ${TestProjectRootDir}/app/aliyun-emas-services.json
 ```
+
+## aliyun-emas-services.json
+
+> support com.ali.ams:alicloud-android-third-push:3.2.0
+
+| config.services | Artifact     | Latest version | The Official plugin | This plugin |
+|:----------------|:-------------|:---------------|:-------------------|:------------|
+| hotfix_service  | alicloud-android-hotfix | 3.2.15 |  [√] | [√] |
+| ha-adapter_service  | alicloud-android-ha-adapter | 1.1.3.4-open |  [√] | [√] |
+| feedback_service  | alicloud-android-feedback | 3.3.1 |  [√] | [√] |
+| tlog_service  | alicloud-android-tlog | 1.1.2.3-open |  [√] | [√] |
+| httpdns_service  | alicloud-android-httpdns | 1.3.2.3 |  [√] | [√] |
+| apm_service  | alicloud-android-apm | 1.0.7.9-open |  [√] | [√] |
+| man_service  | alicloud-android-man | 1.2.4 |  [√] | [√] |
+| cps_service  | alicloud-android-push | 3.2.1 |  [√] | [√] |
+| **third-cps_service**  | alicloud-android-third-push | 3.2.0 |  [×] | [√] |
 
 ## Usage
 
