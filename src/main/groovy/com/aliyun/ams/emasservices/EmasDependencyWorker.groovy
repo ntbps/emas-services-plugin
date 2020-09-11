@@ -135,7 +135,7 @@ class EmasDependencyWorker {
         if (service_name.endsWith(SERVICE))
             service_name = service_name.replace(SERVICE, "")
         if (service_name == CPS || service_name == CPS_THIRD_PART)
-            service_name.replace(CPS, PUSH)
+            service_name = service_name.replace(CPS, PUSH)
         return "${PRE_ARTIFACT}${service_name}"
     }
 
