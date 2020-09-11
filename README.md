@@ -76,4 +76,20 @@ For modules using the plugin(e.g. ${THE_TARGET_PROJECT_PATH_USING_THE_PLUGIN}/ap
 apply plugin: 'com.aliyun.ams.emas-services'
 ```
 
+
+**Sample output:**
+
+```
+EMAS: configured services: {"hotfix_service":{"status":0,"version":"3.2.15"},"ha-adapter_service":{"status":0,"version":"1.1.3.4-open"},"feedback_service":{"status":0,"version":"3.3.1"},"tlog_service":{"status":0,"version":"1.1.2.3-open"},"httpdns_service":{"status":0,"version":"1.3.2.3"},"apm_service":{"status":0,"version":"1.0.7.9-open"},"man_service":{"status":0,"version":"1.2.4"},"cps_service":{"status":1,"version":"3.2.1"},"third-cps_service":{"status":1,"version":"3.2.0"}}
+EMAS: hotfix_service service disabled!
+EMAS: ha-adapter_service service disabled!
+EMAS: feedback_service service disabled!
+EMAS: tlog_service service disabled!
+EMAS: httpdns_service service disabled!
+EMAS: apm_service service disabled!
+EMAS: man_service service disabled!
+EMAS: add dependencies: oem_xiaomuDebugImplementation com.aliyun.ams:alicloud-android-push:3.2.1
+EMAS: add dependencies: oem_xiaomuDebugImplementation com.aliyun.ams:alicloud-android-third-push:3.2.0
+```
+
 ## [LICENSE](./LICENSE)

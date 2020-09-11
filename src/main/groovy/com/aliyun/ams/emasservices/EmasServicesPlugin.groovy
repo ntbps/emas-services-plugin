@@ -25,6 +25,7 @@ class EmasServicesPlugin implements Plugin<Project>, GroovyObject {
         for (PluginType pluginType : PluginType.values()) {
             for (String plugin : pluginType.plugins()) {
                 if (project.plugins.hasPlugin(plugin)) {
+                    EmasDependencyAnalyzer.highlightOutput("EMAS: found plugin ${plugin} for ${pluginType}")
                     setupPlugin(project, globalDependencies, pluginType)
                     return
                 }
@@ -49,11 +50,11 @@ class EmasServicesPlugin implements Plugin<Project>, GroovyObject {
     }
 
     private static void handleVariant(Project project, EmasDependencyAnalyzer analyzer, def variant) {
-        logger.info("handleVariant: name:${variant.name}, dir:${variant.dirName}, pkg:${variant.applicationId}, flavor:${variant.flavorName}, build:${variant.buildType.name}")
+        logger.warn("EMAS:handleVariant: name:${variant.name}, dir:${variant.dirName}, pkg:${variant.applicationId}, flavor:${variant.flavorName}, build:${variant.buildType.name}")
         try {
             EmasDependencyWorker.checkIfApplicationIdMatched(project, variant)
         } catch (EmasServicesException e) {
-            logger.debug("${variant.applicationId}:${variant.flavorName}: ${e.getMessage()}")
+            logger.info("${variant.applicationId}:${variant.flavorName}: ${e.getMessage()}")
             return
         }
 

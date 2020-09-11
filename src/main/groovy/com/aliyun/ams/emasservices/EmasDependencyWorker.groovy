@@ -62,7 +62,7 @@ class EmasDependencyWorker {
 
     static JsonObject getEmasServicesJson(Project project, String variantDir) {
         File quickStartFile = getQuickStartFile(project, variantDir)
-        logger.warn("Parsing json file: ${quickStartFile.path}")
+        logger.warn("EMAS: Parsing json file: ${quickStartFile.path}")
         JsonElement root = (new JsonParser()).parse(Files.newReader(quickStartFile, Charsets.UTF_8))
         if (!root.isJsonObject())
             throw new EmasServicesException("Malformed root json")
@@ -93,7 +93,7 @@ class EmasDependencyWorker {
     }
 
     private static List<String> getJsonLocations(String variantDir) {
-        logger.info("handleDependenciesServices: ${variantDir}")
+        logger.info("getJsonLocations: ${variantDir}")
         Matcher variantMatcher = VARIANT_PATTERN.matcher(variantDir)
         List<String> fileLocations = new ArrayList<>()
         if (!variantMatcher.matches()) {
